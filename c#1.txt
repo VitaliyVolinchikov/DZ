@@ -1,0 +1,80 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Р’РІРµРґРёС‚Рµ N: ");
+        int N = int.Parse(Console.ReadLine());
+        PrintNaturalNumbers(N);
+    }
+
+    static void PrintNaturalNumbers(int N)
+    {
+        if (N >= 1)
+        {
+            Console.Write(N);
+            if (N > 1)
+                Console.Write(", ");
+            PrintNaturalNumbers(N - 1);
+        }
+    }
+}
+
+
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Р’РІРµРґРёС‚Рµ M: ");
+        int M = int.Parse(Console.ReadLine());
+
+        Console.Write("Р’РІРµРґРёС‚Рµ N: ");
+        int N = int.Parse(Console.ReadLine());
+
+        int sum = CalculateSum(M, N);
+        Console.WriteLine("РЎСѓРјРјР° РЅР°С‚СѓСЂР°Р»СЊРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РѕС‚ " + M + " РґРѕ " + N + " СЂР°РІРЅР° " + sum);
+    }
+
+    static int CalculateSum(int M, int N)
+    {
+        if (N < M)
+            return 0;
+        return N + CalculateSum(M, N - 1);
+    }
+}
+
+
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Р’РІРµРґРёС‚Рµ m: ");
+        int m = int.Parse(Console.ReadLine());
+
+        Console.Write("Р’РІРµРґРёС‚Рµ n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int result = AckermannFunction(m, n);
+        Console.WriteLine($"A({m},{n}) = {result}");
+    }
+
+    static int AckermannFunction(int m, int n)
+    {
+        if (m == 0)
+            return n + 1;
+        if (m > 0 && n == 0)
+            return AckermannFunction(m - 1, 1);
+        if (m > 0 && n > 0)
+            return AckermannFunction(m - 1, AckermannFunction(m, n - 1));
+
+        return 0; // Р’РµСЂРЅСѓС‚СЊ 0 РІ СЃР»СѓС‡Р°Рµ РЅРµРІРµСЂРЅС‹С… РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
+    }
+}
